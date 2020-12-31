@@ -1,17 +1,25 @@
 digraph Tree {
 node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
 edge [fontname=helvetica] ;
-0 [label="2 <= 2217.881\ngini = 0.388\nsamples = 27\nvalue = [28, 10]\nclass = ALL", fillcolor="#eeae80"] ;
-1 [label="8 <= -10448.188\ngini = 0.067\nsamples = 20\nvalue = [28, 1]\nclass = ALL", fillcolor="#e68640"] ;
+0 [label="33 <= -164.814\ngini = 0.301\nsamples = 25\nvalue = [31, 7]\nclass = ALL", fillcolor="#eb9d66"] ;
+1 [label="23 <= 2957.995\ngini = 0.074\nsamples = 16\nvalue = [25, 1]\nclass = ALL", fillcolor="#e68641"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label="31 <= 7120.847\ngini = 0.375\nsamples = 2\nvalue = [3, 1]\nclass = ALL", fillcolor="#eeab7b"] ;
+2 [label="gini = 0.0\nsamples = 12\nvalue = [19, 0]\nclass = ALL", fillcolor="#e58139"] ;
 1 -> 2 ;
-3 [label="gini = 0.0\nsamples = 1\nvalue = [0, 1]\nclass = AML", fillcolor="#399de5"] ;
-2 -> 3 ;
-4 [label="gini = 0.0\nsamples = 1\nvalue = [3, 0]\nclass = ALL", fillcolor="#e58139"] ;
-2 -> 4 ;
-5 [label="gini = 0.0\nsamples = 18\nvalue = [25, 0]\nclass = ALL", fillcolor="#e58139"] ;
-1 -> 5 ;
-6 [label="gini = 0.0\nsamples = 7\nvalue = [0, 9]\nclass = AML", fillcolor="#399de5"] ;
+3 [label="31 <= 2242.71\ngini = 0.245\nsamples = 4\nvalue = [6, 1]\nclass = ALL", fillcolor="#e9965a"] ;
+1 -> 3 ;
+4 [label="gini = 0.0\nsamples = 3\nvalue = [6, 0]\nclass = ALL", fillcolor="#e58139"] ;
+3 -> 4 ;
+5 [label="gini = 0.0\nsamples = 1\nvalue = [0, 1]\nclass = AML", fillcolor="#399de5"] ;
+3 -> 5 ;
+6 [label="21 <= -3845.881\ngini = 0.5\nsamples = 9\nvalue = [6, 6]\nclass = ALL", fillcolor="#ffffff"] ;
 0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label="gini = 0.0\nsamples = 3\nvalue = [4, 0]\nclass = ALL", fillcolor="#e58139"] ;
+6 -> 7 ;
+8 [label="4 <= -971.368\ngini = 0.375\nsamples = 6\nvalue = [2, 6]\nclass = AML", fillcolor="#7bbeee"] ;
+6 -> 8 ;
+9 [label="gini = 0.0\nsamples = 2\nvalue = [2, 0]\nclass = ALL", fillcolor="#e58139"] ;
+8 -> 9 ;
+10 [label="gini = 0.0\nsamples = 4\nvalue = [0, 6]\nclass = AML", fillcolor="#399de5"] ;
+8 -> 10 ;
 }
