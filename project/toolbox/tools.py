@@ -61,7 +61,7 @@ from graphviz import Source
 from sklearn.tree import export_graphviz
 def plot_tree_graph(inp, start, stop):
     dot_data = export_graphviz(inp, out_file=None, 
-                               feature_names=range(1,34),  
+                               feature_names=range(1,39),  
                                class_names= ['ALL', 'AML'],
                                rounded=True,
                                filled=True)
