@@ -1,16 +1,41 @@
 import matplotlib.pyplot as plt
+
 def get_variance_percentage(pca):
+    """
+    Retruns the pca variance percentage
+
+    Parameters
+    ----------
+    pca : PCA
+        principle components
+        """
     pca_variance_ratio = pca.explained_variance_ratio_.cumsum()
     pca_variance_percentage = pca_variance_ratio * 100
     return pca_variance_percentage
 
 def get_number_of_attributes(pca_variance_percentage):
+    """
+    Retruns the number of pca components
+    Parameters
+    ----------
+    pca_variance_percentage : numpy array
+        calculated variance of the principle components
+        """
     #Determine number of attributes needed for an explained variance of 90%
     pca_variance_cropped = [i for i in pca_variance_percentage if i < 90]
     no_attributes = len(pca_variance_cropped)
     return no_attributes
 
 def plot_pca_variance(pca_variance_percentage, no_attributes):
+    """
+    Plots pca variance
+    Parameters
+    ----------
+    pca_variance_percentage : numpy array
+        calculated variance of the principle components
+    no_attributes : int
+        number of principle components that explain the variance
+        """
     plt.bar(range(1,pca_variance_percentage.size+1), pca_variance_percentage)
     plt.title("Explained variance summed per attribute")
     plt.xlabel("Attribute number")

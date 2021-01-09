@@ -1,5 +1,16 @@
 import numpy as np
 def clean_data(train, test, y):
+    """
+    returns a cleaned data set
+    Parameters
+    ----------
+    train : DataFrame
+        train data
+    test : DataFrame
+        test data
+    y : DataFrame
+        y data
+        """
     # Drop the call collumns from both data sets
     call_cols_train = [col for col in train.columns if 'call' in col]
     train = train.drop(call_cols_train, axis = 1)
@@ -17,12 +28,32 @@ def clean_data(train, test, y):
     return train, test, y
 
 
-def get_X_train_and_test_data(train, test, y):
+def get_X_train_and_test_data(train, test):
+    """
+    Returns X_train, X_test data sets
+    Parameters
+    ----------
+    train : DataFrame
+        train data
+    test : DataFrame
+        test data
+        """
     X_train = train.reset_index(drop=True)
     X_test = test.reset_index(drop=True)
     return X_train, X_test
 
 def get_y_train_and_test_data(y):
+    """
+    returns y_train and y_test data sets
+    Parameters
+    ----------
+    train : DataFrame
+        train data
+    test : DataFrame
+        test data
+    y : DataFrame
+        y data
+        """
     y_train = y[y.index <= 38].reset_index(drop=True) 
     y_test= y[y.index > 38].reset_index(drop=True)
     #y_train = y['cancer'][:38]
@@ -31,6 +62,15 @@ def get_y_train_and_test_data(y):
 
 
 def merge_train_and_test_data(train, test):
+    """
+    Returns a merged data set
+    Parameters
+    ----------
+    train : DataFrame
+        train data
+    test : DataFrame
+        test data
+        """
     train = train.replace(np.inf, np.nan)
     train = train.fillna(value = train.values.mean())
     test = test.replace(np.inf, np.nan)
