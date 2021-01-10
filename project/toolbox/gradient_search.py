@@ -14,7 +14,7 @@ def grid_search_classifier(classifier, parameters, x_train, x_test, y_train, y_t
         cols_to_keep = ['param_criterion', 'param_n_estimators', 'param_max_depth', 'param_min_samples_leaf' , 'param_random_state', 'mean_train_score', 'std_train_score']
     elif classifier == 'xgb':
         clf1 = xgb.XGBClassifier()
-        cols_to_keep = ['param_criterion', 'param_n_estimators',  'param_max_depth', 'param_min_samples_leaf' , 'param_random_state', 'mean_train_score', 'std_train_score']
+        cols_to_keep = ['param_eval_metric', 'param_n_estimators',  'param_max_depth', 'param_random_state', 'mean_train_score', 'std_train_score']
     
     clf = GridSearchCV(clf1, parameters, n_jobs = -1, cv = 10, return_train_score = True)
     clf.fit(x_train, y_train)
