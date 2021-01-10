@@ -54,7 +54,7 @@ def k_fold(X_data, y, folds, start, stop, step, method):
         accuracy_mean_test = np.append(accuracy_mean_test, np.mean(accuracy_test))
     return accuracy_mean_train, accuracy_mean_test
 
-def plot_classification_error(start, stop, step, accuracy_mean_train, accuracy_mean_test, function):
+def plot_classification_error(start, stop, step, accuracy_mean_train, accuracy_mean_test, tree_type, function):
     """
     Returns accuracy mean for train and test data
     Parameters
@@ -77,5 +77,5 @@ def plot_classification_error(start, stop, step, accuracy_mean_train, accuracy_m
     plt.legend()
     plt.xlabel('Maximum {}'.format(function))
     plt.ylabel('Classification error')
-    plt.title('Classification error of a decision tree as function of {}'.format(function))
+    plt.title(f'Classification error of a {tree_type} tree as function of {function}')
     plt.show()
