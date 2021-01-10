@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 def get_variance_percentage(pca):
     """
@@ -25,6 +26,16 @@ def get_number_of_attributes(pca_variance_percentage):
     pca_variance_cropped = [i for i in pca_variance_percentage if i < 90]
     no_attributes = len(pca_variance_cropped)
     return no_attributes
+
+def get_pca_data_sets(pca_complete, no_attributes):
+    #Crop pca_data
+    pca_data = np.delete(pca_complete, slice(no_attributes, len(pca_complete)) , 1)
+    
+    #Split data back to original train and test split
+    pca_train = pca_data[:38]
+    pca_test = pca_data[38:]
+    
+    return pca_data, pca_train, pca_test
 
 def plot_pca_variance(pca_variance_percentage, no_attributes):
     """

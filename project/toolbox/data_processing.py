@@ -1,4 +1,11 @@
 import numpy as np
+import pandas as pd
+def load_data():
+    X_train = pd.read_csv('data/archive/data_set_ALL_AML_train.csv')
+    X_test = pd.read_csv('data/archive/data_set_ALL_AML_independent.csv')
+    y = pd.read_csv('data/archive/actual.csv', index_col = 'patient')
+    return X_train, X_test, y
+
 def clean_data(train, test, y):
     """
     returns a cleaned data set
@@ -27,20 +34,14 @@ def clean_data(train, test, y):
     y = y.replace({'ALL':0,'AML':1})
     return train, test, y
 
+def sort_X_train_and_test_data(train, test):
+    train.index = pd.to_numeric(train.index) 
+    test.index = pd.to_numeric(test.index)
+    #y.index = pd.to_numeric(y.index)
+    train.sort_index(inplace=True) 
+    test.sort_index(inplace=True)
+    return train, test
 
-def get_X_train_and_test_data(train, test):
-    """
-    Returns X_train, X_test data sets
-    Parameters
-    ----------
-    train : DataFrame
-        train data
-    test : DataFrame
-        test data
-        """
-    X_train = train.reset_index(drop=True)
-    X_test = test.reset_index(drop=True)
-    return X_train, X_test
 
 def get_y_train_and_test_data(y):
     """
@@ -56,24 +57,4 @@ def get_y_train_and_test_data(y):
         """
     y_train = y[y.index <= 38].reset_index(drop=True) 
     y_test= y[y.index > 38].reset_index(drop=True)
-    #y_train = y['cancer'][:38]
-    #y_test = y['cancer'][38:]
     return y_train, y_test
-
-
-def merge_train_and_test_data(train, test):
-    """
-    Returns a merged data set
-    Parameters
-    ----------
-    train : DataFrame
-        train data
-    test : DataFrame
-        test data
-        """
-    train = train.replace(np.inf, np.nan)
-    train = train.fillna(value = train.values.mean())
-    test = test.replace(np.inf, np.nan)
-    test = test.fillna(value = train.values.mean())
-    complete_data = train.append(test)
-    return complete_data
